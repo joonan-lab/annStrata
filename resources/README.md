@@ -4,7 +4,7 @@
 
 ## Annotation BEDs
 
-Run `scripts/download_resources.sh` from the repository directory. It downloads the files below, keeps the columns the
+Run `bash scripts/download_resources.sh` from the repository directory. It downloads the files below, keeps the columns the
 feature builder reads, sorts, compresses, and indexes them, and checks each prepared file against the SHA-256 of the file
 used for training.
 

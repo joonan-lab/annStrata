@@ -47,7 +47,7 @@ The repository includes the model weights (gzip-compressed LightGBM model files,
 ```bash
 git clone https://github.com/joonan-lab/annStrata.git
 cd annStrata
-python3 -m venv .venv && source .venv/bin/activate
+python3 -m venv annstrata-venv && source annstrata-venv/bin/activate
 pip install -e ".[sv-vcf]"
 annstrata self-test --checksum
 ```
@@ -59,7 +59,7 @@ predictions for a small STR and SV test set. To keep the models in another direc
 **2. For SV scoring from a VCF: download the annotation BEDs and the reference**
 
 ```bash
-scripts/download_resources.sh        # GIAB stratifications v3.6 and UCSC RepeatMasker, prepared in resources/
+bash scripts/download_resources.sh   # GIAB stratifications v3.6 and UCSC RepeatMasker, prepared in resources/
 ```
 
 The script checks each prepared file against the files used for training. The GRCh38 reference FASTA (3.2 GB) is
@@ -134,7 +134,7 @@ fail FILTER are scored like any other call. INV and BND records, chrY and chrM, 
 |---|---|
 | `annstrata/` | Package: command-line interface, STR and SV scoring, feature builder, self-test |
 | `models/` | Model weights (gzip-compressed LightGBM model files), registry, feature specifications, calibration maps, and feature importance |
-| `resources/` | Annotation BEDs for SV scoring, created by `scripts/download_resources.sh` |
+| `resources/` | Annotation BEDs for SV scoring, created by `bash scripts/download_resources.sh` |
 | `scripts/` | `download_resources.sh` |
 | `tests/` | Test inputs and frozen predictions for `annstrata self-test` |
 

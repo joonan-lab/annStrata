@@ -5,7 +5,7 @@
 # Each file is reduced to the columns the feature builder reads, sorted, bgzip-compressed and tabix-indexed with pysam,
 # and checked against the SHA-256 of the uncompressed BED used to train the SV model.
 #
-# usage: scripts/download_resources.sh [output directory]      (default: resources/ in the repository)
+# usage: bash scripts/download_resources.sh [output directory]      (default: resources/ in the repository)
 # needs: curl, awk, sort, and Python with pysam (pip install "annstrata[sv-vcf]")
 set -euo pipefail
 

@@ -4,6 +4,7 @@ __pycache__/
 build/
 dist/
 .venv/
+annstrata-venv/
 
 # uncompressed model weights (the repository keeps the gzip-compressed copies) and annotation BEDs
 # (scripts/download_resources.sh)
