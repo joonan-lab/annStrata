@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "annstrata"
+version = "1.0.0"
+description = "Long-read-supervised reliability scores for short-read STR and SV calls: per-allele discordance probability and corrected length (STR), per-call discordance probability (SV)"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.12"
+dependencies = ["numpy>=2.5", "pandas>=3.0", "lightgbm>=4.7"]
+keywords = ["structural variants", "short tandem repeats", "long-read sequencing", "variant quality control", "genomics"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.optional-dependencies]
+sv-vcf = ["pysam>=0.22"]
+
+[project.scripts]
+annstrata = "annstrata.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/joonan-lab/annStrata"
+Repository = "https://github.com/joonan-lab/annStrata"
+
+[tool.setuptools]
+packages = ["annstrata"]

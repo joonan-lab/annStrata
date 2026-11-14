@@ -1,0 +1,101 @@
+{
+ "schema": "annstrata-registry-v1",
+ "software_version": "1.0.0",
+ "release_date": "2026-11-10",
+ "models": {
+  "str": {
+   "description": "Direct per-allele model (LightGBM): calibrated error probability P(|EH length - TRGT AL| > max(1 RU, 0.5 x AL)) and corrected long-read length (median, 80% interval); HPRC 274, autosomal and chrX loci; 42 features from the VCF record incl. partner allele",
+   "model": {
+    "path": "str/models/binary.txt.gz",
+    "bytes": 42175192,
+    "sha256": "6addbeb9e0c0db30c7e4286ffd691701ca2168677804b143ffbe2618e402d4c3",
+    "compressed_bytes": 18088649
+   },
+   "quantile_lo": {
+    "path": "str/models/q0.1.txt.gz",
+    "bytes": 74302212,
+    "sha256": "19556d613c522a299886e19b79519c12aff007029284371ccf38ea031df01c1e",
+    "compressed_bytes": 23755702
+   },
+   "quantile_med": {
+    "path": "str/models/q0.5.txt.gz",
+    "bytes": 7917419,
+    "sha256": "6456ea97c5832c7c27cffd10f341e290f58c237896dac607dd3a49154d1cbe4f",
+    "compressed_bytes": 2473656
+   },
+   "quantile_hi": {
+    "path": "str/models/q0.9.txt.gz",
+    "bytes": 29975111,
+    "sha256": "a3289cfef6dc52bdd118c250f951c3a8a50f26df7acc2341a21efecaa42e5000",
+    "compressed_bytes": 9271392
+   },
+   "calibration": {
+    "path": "str/calibration_global.json",
+    "bytes": 29227,
+    "sha256": "a64a665604a06959cf1ea1f469bb4f02e14fb23968fab1ad1335dc0c107cf929"
+   },
+   "spec": {
+    "path": "str/spec.json",
+    "bytes": 3916,
+    "sha256": "e21ba93b4c277d3677cc981b010e60a3bd03c1b79f8f3196781be08a0d9442f4"
+   }
+  },
+  "sv": {
+   "description": "LightGBM SV model: calibrated P(Manta DEL/INS/DUP call is discordant with the 2-of-3 long-read consensus); HPRC 274, calls of 50 bp - 5 Mb on autosomes and chrX; 33 features from the VCF record, reference sequence and annotation BEDs",
+   "model": {
+    "path": "sv/models/binary.txt.gz",
+    "bytes": 116683587,
+    "sha256": "ea1b4ad2e6b2c767b880a06e5238427da82ac9356cb9d48b4a4ae444cb7d97dd",
+    "compressed_bytes": 50110327
+   },
+   "calibration": {
+    "path": "sv/calibration_global.json",
+    "bytes": 24647,
+    "sha256": "1a4b28cc9070dc65af86e63be3d3c9cc49f8630cb044d7fd551a9ccf3ce33b2b"
+   },
+   "spec": {
+    "path": "sv/spec.json",
+    "bytes": 3360,
+    "sha256": "685055f72c42c1c3b6bb461f193515357501b2920bb40de3bfaf49c8a9766b20"
+   }
+  }
+ },
+ "release": {
+  "str": {
+   "model": "direct per-allele model: LightGBM binary classifier (error probability, global isotonic calibration) + three LightGBM quantile regressors (corrected length); 42 features incl. partner allele; one hyperparameter set (num_leaves 127, min_data_in_leaf 1000, lr 0.05, early stopping)",
+   "truth": "TRGT 5.1.0 allele span (AL, bp) at the same catalog loci",
+   "training_data": "HPRC, 274 genomes with matched Illumina and PacBio HiFi data; ExpansionHunter 5.0.0 (Illumina extended catalog) and TRGT run with the sex of each genome",
+   "samples": 274,
+   "scope": "autosomes and chrX; chrY/chrM records are kept but not scored; a haploid call is scored as a homozygous call",
+   "endpoints": {
+    "error_probability": "ASES/ASEL = calibrated P(|EH length − long-read length| > max(1 RU, 0.5 × long-read length)); tolerance fixed at training",
+    "corrected_length": "ASLS/ASLL = predicted long-read length bp: median, lo80, hi80 (quantiles 0.5 / 0.1 / 0.9 of log2 ratio)"
+   },
+   "artifacts_sha256": {
+    "model": "6addbeb9e0c0db30c7e4286ffd691701ca2168677804b143ffbe2618e402d4c3",
+    "quantile_lo": "19556d613c522a299886e19b79519c12aff007029284371ccf38ea031df01c1e",
+    "quantile_med": "6456ea97c5832c7c27cffd10f341e290f58c237896dac607dd3a49154d1cbe4f",
+    "quantile_hi": "a3289cfef6dc52bdd118c250f951c3a8a50f26df7acc2341a21efecaa42e5000",
+    "calibration": "a64a665604a06959cf1ea1f469bb4f02e14fb23968fab1ad1335dc0c107cf929",
+    "spec": "e21ba93b4c277d3677cc981b010e60a3bd03c1b79f8f3196781be08a0d9442f4"
+   },
+   "lightgbm": "4.7.0"
+  },
+  "sv": {
+   "model": "LightGBM binary classifier (error probability, global isotonic calibration); 33 features; num_leaves 127, min_data_in_leaf 1000, lr 0.05, early stopping",
+   "truth": "2-of-3 consensus of Sniffles2, cuteSV and Sawfish on PacBio HiFi (Truvari collapse, reference distance 500 bp, size and sequence similarity 0.7, same type, events up to 5 Mb), HPRC 274 genomes",
+   "labels": "Truvari 5.3.0 bench per sample: refdist 500, pctsize 0.7, pctseq 0.7, pctovl 0, sizemin/sizefilt 50, sizemax 5 Mb, dup-to-ins, no-roll, pick single; discordant (FP) = 1",
+   "training_data": "HPRC, 274 genomes; Manta 1.6.0 calls",
+   "samples": 274,
+   "scope": "Manta DEL/INS/DUP calls of 50 bp - 5 Mb on autosomes and chrX; INV/BND, chrY/chrM and other sizes are not scored",
+   "endpoints": {
+    "error_probability": "ASEP (VCF FORMAT) / error_probability (TSV) = calibrated P(call is discordant with the long-read 2-of-3 consensus)"
+   },
+   "model_sha256": "ea1b4ad2e6b2c767b880a06e5238427da82ac9356cb9d48b4a4ae444cb7d97dd",
+   "lightgbm": "4.7.0"
+  },
+  "canonical_direction": "higher error probability means greater endpoint-specific error risk",
+  "operating_threshold": null,
+  "cross_endpoint_tier": null
+ }
+}

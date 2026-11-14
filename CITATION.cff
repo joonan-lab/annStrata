@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use annStrata, please cite it as below."
+title: "annStrata: long-read-supervised reliability assessment for cohort-scale analysis of short-read structural variants and tandem repeats"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/joonan-lab/annStrata"
+authors:
+  - family-names: Yeom
+    given-names: Kyeongho
+  - family-names: Kim
+    given-names: Wooheon
+  - family-names: Lee
+    given-names: Hyeji
+  - family-names: Hong
+    given-names: Hyunjin
+  - family-names: Bong
+    given-names: Guiyoung
+  - family-names: Han
+    given-names: Jae Hyun
+  - family-names: Trost
+    given-names: Brett
+  - family-names: Cunial
+    given-names: Fabio
+  - family-names: Lee
+    given-names: Eunkyung
+  - family-names: Kim
+    given-names: Il Bin
+  - family-names: Yoo
+    given-names: Hee Jeong
+  - family-names: An
+    given-names: Joon-Yong

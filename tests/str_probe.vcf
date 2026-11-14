@@ -1,0 +1,18 @@
+##fileformat=VCFv4.2
+##INFO=<ID=REPID,Number=1,Type=String,Description="Repeat ID">
+##INFO=<ID=RU,Number=1,Type=String,Description="Repeat unit">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=REPCN,Number=1,Type=String,Description="Repeat copy number">
+##FORMAT=<ID=REPCI,Number=1,Type=String,Description="Repeat copy number interval">
+##FORMAT=<ID=ADSP,Number=1,Type=String,Description="Spanning reads">
+##FORMAT=<ID=ADFL,Number=1,Type=String,Description="Flanking reads">
+##FORMAT=<ID=ADIR,Number=1,Type=String,Description="In-repeat reads">
+##FORMAT=<ID=SO,Number=1,Type=String,Description="Support type">
+##FORMAT=<ID=LC,Number=1,Type=Float,Description="Locus coverage">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	PROBE
+chr1	100	.	N	<STR8>	.	PASS	REPID=p_clean;RU=AAAT	GT:REPCN:REPCI:ADSP:ADFL:ADIR:SO:LC	0/0:8/8:8-8/8-8:29/29:11/11:0/0:SPANNING/SPANNING:27
+chr1	200	.	N	<STR36>	.	PASS	REPID=p_flank;RU=AGAA	GT:REPCN:REPCI:ADSP:ADFL:ADIR:SO:LC	1/2:34/36:34-34/35-44:1/0:50/52:0/0:SPANNING/FLANKING:37.8649
+chr1	300	.	N	<STR52>	.	PASS	REPID=p_inrep;RU=AAACC	GT:REPCN:REPCI:ADSP:ADFL:ADIR:SO:LC	1/2:9/52:9-9/42-72:14/0:26/42:1/13:SPANNING/INREPEAT:43.5405
+chr1	400	.	N	<STR2>	.	PASS	REPID=p_flip;RU=AATA	GT:REPCN:REPCI:ADSP:ADFL:ADIR:SO:LC	1/0:2/1:2-2/1-1:20/5:1/1:0/0:SPANNING/SPANNING:34.5405
+chr1	500	.	N	.	.	PASS	REPID=p_missing;RU=CG	GT:REPCN:REPCI:ADSP:ADFL:ADIR:SO:LC	./.:./.:.:.:.:.:.:9.5
+chrX	600	.	N	<STR5>	.	PASS	REPID=p_hemi;RU=AC	GT:REPCN:REPCI:ADSP:ADFL:ADIR:SO:LC	0:5:5-5:23:7:0:SPANNING:33.4

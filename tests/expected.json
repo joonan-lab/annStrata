@@ -1,0 +1,40 @@
+{
+  "str": {
+    "probe": "tests/str_probe.vcf",
+    "scope": "autosomes and chrX (a haploid call is scored as a homozygous call, as in training); chrY/chrM records are not scored",
+    "fixed_tolerance": "alpha 0.5, 1 RU floor (set at training)",
+    "fields": [
+      "0.000;0.000;32,32,32;32,32,32",
+      "0.002;0.000;136,131,142;144,124,160",
+      "0.002;0.076;45,42,45;287,180,712",
+      "0.007;0.015;4,4,8;8,8,8",
+      ".;.;.;.",
+      "0.004;0.002;10,10,10;10,10,10"
+    ]
+  },
+  "sv": {
+    "probe": "tests/sv_probe.vcf (HPRC HG00438 Manta subset, chr1/chr2/chrX)",
+    "features": "tests/sv_probe.features.tsv (feature_builder output)",
+    "scope": "DEL/INS/DUP 50 bp - 5 Mb on autosomes and chrX; null = not scored",
+    "error_probability": [
+      null,
+      null,
+      0.0203,
+      0.0551,
+      0.0061,
+      0.0025,
+      0.9942,
+      0.0032,
+      0.0032,
+      0.0104,
+      0.0032,
+      0.0203,
+      0.0045,
+      0.0125,
+      0.0096,
+      null,
+      0.9701,
+      0.0017
+    ]
+  }
+}

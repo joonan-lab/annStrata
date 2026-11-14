@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# uncompressed model weights (the repository keeps the gzip-compressed copies) and annotation BEDs
+# (scripts/download_resources.sh)
+models/*/models/*.txt
+resources/giab_prepared/
+resources/repeatmasker/
