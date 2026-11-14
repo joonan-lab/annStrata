@@ -146,7 +146,7 @@ If you use annStrata, please cite:
 
 Yeom K, Kim W, Lee H, Hong H, Bong G, Han JH, Trost B, Cunial F, Lee E, Kim IB, Yoo HJ, An J-Y. annStrata:
 long-read-supervised reliability assessment for cohort-scale analysis of short-read structural variants and tandem
-repeats.
+repeats. Submitted to *Genome Biology*.
 
 ---
 
